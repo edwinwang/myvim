@@ -1,5 +1,15 @@
 set nocompatible
 filetype off 
+
+set encoding=utf8
+set fileencoding=utf8
+set fileencodings=utf8
+set langmenu=zh_CN.utf-8
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+language messages zh_cn.utf-8 
+language messages zh_cn.utf-8 
+
 "设置默认行号
 set nu
 "设置（软）制表符宽度为4
@@ -20,6 +30,8 @@ syntax enable
 syntax on
 "配色方案
 colorscheme desert
+" 为光标所在行添加标识(Windows下为高亮模式，Linux下为下划线)
+"setlocal cursorlin
 "在状态栏显示正在输入的命令
 set showcmd
 "<F2> 开启关闭行号显示
@@ -191,3 +203,23 @@ nnoremap bd :Bd<CR>
 map <F9> <leader>cc
 map <F10> <leader>cu
 "##############################################
+
+"#####################################################
+"##################AIRLINE############################
+"#####################################################
+" airline设置
+set guifont=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
+set laststatus=2
+" 使用powerline打过补丁的字体
+let g:airline_powerline_fonts = 1
+" 开启tabline
+let g:airline#extensions#tabline#enabled = 1
+" tabline中当前buffer两端的分隔字符
+let g:airline#extensions#tabline#left_sep = ' '
+" tabline中未激活buffer两端的分隔字符
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" tabline中buffer显示编号
+let g:airline#extensions#tabline#buffer_nr_show = 1
+" 映射切换buffer的键位
+nnoremap [b :bp<CR>
+nnoremap ]b :bn<CR>
